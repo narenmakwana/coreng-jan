@@ -1,0 +1,112 @@
+@import '~@angular/material/core/theming/all-theme';
+
+@include md-core();
+
+$primary: (
+  50 : #e4f2ee,
+  100 : #badfd4,
+  200 : #8dc9b7,
+  300 : #5fb39a,
+  400 : #3ca385,
+  500 : #1a936f,
+  600 : #178b67,
+  700 : #13805c,
+  800 : #0f7652,
+  900 : #086440,
+  A100 : #96ffd1,
+  A200 : #63ffba,
+  A400 : #30ffa4,
+  A700 : #16ff99,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+$secondary: (
+  50 : #e2e9ec,
+  100 : #b8c9cf,
+  200 : #88a5af,
+  300 : #58818f,
+  400 : #356677,
+  500 : #114b5f,
+  600 : #0f4457,
+  700 : #0c3b4d,
+  800 : #0a3343,
+  900 : #052332,
+  A100 : #6bc6ff,
+  A200 : #38b3ff,
+  A400 : #059fff,
+  A700 : #0090eb,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+
+// mandatory stuff for theming
+//$core-primary: md-palette($core-green);
+//$core-accent:  md-palette($core-blue);
+$core-primary-palette: md-palette($primary);
+$core-accent-palette:  md-palette($secondary);
+$core-warn-palette: md-palette($md-red);
+
+// include the custom theme components into a theme object
+$core-main-theme: md-light-theme($core-primary-palette, $core-accent-palette, $core-warn-palette);
+
+// include the custom theme object into the angular material theme
+@include angular-material-theme($core-main-theme);
+
+$primary-color: map_get($core-primary-palette, 500);
+$secondary-color: map_get($core-accent-palette, 500);
+$sidenav-primary-color: map_get($core-accent-palette, 500);
+$sidenav-secondary-color: #1A936F;
+
+
+
+$border-radius: 2px;
+$enable-shadows: true;
+
+
+$roboto-font-path: "../node_modules/materialize-css/fonts/roboto/" !default;
+$font-color: rgba(0, 0, 0, .7);
+
+
+$small-screen-up: 601px !default;
+$medium-screen-up: 993px !default;
+$large-screen-up: 1201px !default;
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1200px !default;
+
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
