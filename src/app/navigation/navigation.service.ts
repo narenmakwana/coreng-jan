@@ -31,7 +31,7 @@ export class NavigationService {
   private _windowSize: Subject<number> = new BehaviorSubject(NavigationService.largeViewportWidth);
   private _openSidenavStyle: Subject<string> = new BehaviorSubject('side');
   private _closedSidenavStyle: Subject<string> = new BehaviorSubject('icon overlay');
-  private _sidenavOpened: Subject<boolean> = new BehaviorSubject(!this.largeScreen);
+  private _sidenavOpened: Subject<boolean> = new BehaviorSubject(this.largeScreen);
   private _fixedNavbar: Subject<boolean> = new BehaviorSubject(false);
   private _isRouteLoading: Subject<boolean> = new BehaviorSubject(true);
 
@@ -55,7 +55,7 @@ export class NavigationService {
       this._titleSeparator.next(_coreOptions.titleSeparator);
     }
     let style: string = localStorage.getItem('sidenavOpened');
-    if(!StringUtils.isEmpty(style)) {
+    if(!StringUtils.isEmpty(style) && this.largeScreen) {
       this._sidenavOpened.next(style === 'true');
     }
   }
